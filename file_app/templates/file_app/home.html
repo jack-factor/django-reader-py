@@ -1,0 +1,12 @@
+{% extends 'file_app/base.html' %}
+{% block content %}
+
+
+<h1>READER</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form }}
+	<button type="submit">Enviar</button>
+</form>
+{% endblock %}
