@@ -1,12 +1,77 @@
 {% extends 'file_app/base.html' %}
 {% block content %}
 
+<div class="container">
 
-<h1>READER</h1>
-
-<form action="" method="post" enctype="multipart/form-data">
+<p class="p-3">
+	This app reads files with extension pdf and extract the text of them.
+	To achieve this goal we use the library <a href="https://pypi.org/project/PyPDF2/">PyPDF2</a>
+</p>
+<h1 class="p-3">READER</h1>
+<form class="form" action="" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	{{ form }}
-	<button type="submit">Enviar</button>
+
+	{% for field in form %}
+	 <div class="mb-3">
+		{{ field.label_tag }}
+		{{ field }}
+	</div>
+		
+	{% endfor %}
+	<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+	<div class="p-3"></div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">FILE</h5>
+			<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<strong>Name:</strong> {{ data.file.name }}</li>
+			<li class="list-group-item">
+				<strong>Size:</strong> {{ data.file.size }}</li>
+			</ul>
+			<div class="p-3"></div>
+			<h5 class="card-title">METADATA</h5>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<strong>Author:</strong> {{ data.meta.author }}</li>
+				<li class="list-group-item">
+					<strong>Creator:</strong> {{ data.meta.creator }}</li>
+				<li class="list-group-item">
+					<strong>Producer:</strong> {{ data.meta.producer }}</li>
+				<li class="list-group-item">
+					<strong>Title:</strong>  {{ data.meta.title }}</li>
+				<li class="list-group-item">
+					<strong>Subject:</strong>  {{ data.meta.subject }}</li>
+			</ul>
+			<div class="p-3"></div>
+			<ul class="list-group list-group-flush">
+				<h5 class="card-title">TEXTO</h5>
+				<li class="list-group-item">
+					<strong>Pages:</strong> {{ data.pages }}</li>
+				<li class="list-group-item">
+					<strong>First page text:</strong></li>
+				<li class="list-group-item">
+						  {{ data.text }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="p-3"></div>
+	<div class="form-inline row">
+		<div class="form-group">
+			<!--
+			<a class="btn btn-primary btn-lg" href="#" role="button">READ ALL</a>
+			<a class="btn btn-primary btn-lg" href="#" role="button">SAVE</a>
+			<a class="btn btn-primary btn-lg" href="#" role="button">Link</a>
+		-->
+		</div>
+
+
+	</div>
 </form>
+
+	<div class="p-3">
+		
+	</div>
+</div>
+
 {% endblock %}

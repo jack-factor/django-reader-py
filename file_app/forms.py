@@ -2,5 +2,5 @@ from django import forms
 
 
 class DocumentForm(forms.Form):
-    filename = forms.CharField(label='File Name', max_length=100)
-    document = forms.FileField()
+    document = forms.FileField(
+        widget=forms.FileInput(attrs={'class': 'form-control'}))
