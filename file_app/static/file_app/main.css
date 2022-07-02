@@ -1,0 +1,14 @@
+html,
+body {
+	height: 100%;
+}
+
+.signup {
+	height: 100%;
+}
+
+.title {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+

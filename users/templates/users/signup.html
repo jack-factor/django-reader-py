@@ -1,0 +1,33 @@
+{% extends 'file_app/base.html' %}
+{% block content %}
+<div class="signup">
+	<div class="container">
+			<h1 class="title"> Sign Up</h1>
+			<form class="form" method="POST">
+				{% csrf_token %}
+				<fieldset class="form-group">
+					{% for item in form%}
+					<div class="mb-3">
+						<label>{{ item.label }}</label>
+						{{ item }}
+						{% for error in item.errors %}
+						<div class="alert alert-danger">
+         					 <strong>{{ error }}</strong>
+         				</div>
+        				{% endfor %}
+					</div>
+						
+					{% endfor %}
+				</fieldset>
+				<div class="form-group">
+					<button class="btn btn-outline-info" type="submit"> REGISTRAR </button>
+				</div>
+			</form>
+			<div class="border-top pt-3">
+				<small class="text-muted">
+					<a href="">Forgot Password?</a>
+				</small>
+			</div>
+	</div>
+</div>
+{% endblock %}
