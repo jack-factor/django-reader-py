@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import SignUpView
+from file_app.views import HistoryListView, HistoryCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('file_app.urls')),
     path('signup', SignUpView.as_view(), name="signup"),
+    path('history', HistoryListView.as_view(), name="history"),
+    path('history/new/', HistoryCreateView.as_view(), name='history-create'),
+
 ]

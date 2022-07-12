@@ -1,0 +1,31 @@
+{% extends 'file_app/base.html' %}
+{% block content %}
+
+<div class="container">
+<h1 class="title">Files</h1>
+	<div class="p-3">
+		<a class="btn btn-primary btn-lg" href="{% url 'history-create' %}" role="button">ADD</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>File</th>
+					<th>Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in history_list %}
+				<tr>
+					<th>{{ item.title }}</th>
+					<th>{{ item.file.url }}</th>
+					<th>{{ item.created_at }}</th>
+					<th>Action</th>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{% endblock %}
