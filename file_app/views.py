@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView
 from django.contrib import messages
 from .forms import DocumentForm
 from PyPDF2 import PdfReader
@@ -39,6 +39,11 @@ class HistoryCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class HistoryDeleteView(LoginRequiredMixin, DeleteView):
+    model = History
+    success_url = '/history'
 
 
 def handle_uploaded_file(request):

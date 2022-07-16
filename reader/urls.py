@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import SignUpView
-from file_app.views import HistoryListView, HistoryCreateView
+from file_app.views import HistoryListView, HistoryCreateView, HistoryDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,7 @@ urlpatterns = [
     path('signup', SignUpView.as_view(), name="signup"),
     path('history', HistoryListView.as_view(), name="history"),
     path('history/new/', HistoryCreateView.as_view(), name='history-create'),
+    path('history/<int:pk>/delete', HistoryDeleteView.as_view(), name='history-delete'),
+
 
 ]
